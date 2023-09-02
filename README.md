@@ -1,7 +1,6 @@
 # Composable Table
 
-[![Release](https://jitpack.io/v/sunny-chung/composable-table.svg)]
-(https://jitpack.io/#sunny-chung/composable-table)
+[![JitPack Release](https://jitpack.io/v/sunny-chung/composable-table.svg)](https://jitpack.io/#sunny-chung/composable-table)
 
 An Android Jetpack Compose library that provides a `@Composable` table
 with automatic layouts.
