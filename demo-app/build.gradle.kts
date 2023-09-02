@@ -5,11 +5,11 @@ plugins {
 }
 
 android {
-    namespace = "com.sunnychung.lib.android.composabletable"
+    namespace = "com.sunnychung.lib.android.composabletable.demo"
     compileSdk = 34
 
     defaultConfig {
-        applicationId = "com.sunnychung.lib.android.composabletable"
+        applicationId = "com.sunnychung.lib.android.composabletable.demo"
         minSdk = 23
         targetSdk = 34
         versionCode = 1

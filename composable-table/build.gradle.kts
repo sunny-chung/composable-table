@@ -42,6 +42,10 @@ publishing {
             groupId = "com.github.sunny-chung"
             artifactId = "composable-table"
             version = "1.0.0"
+
+            afterEvaluate {
+                from(components["release"])
+            }
         }
     }
 }
