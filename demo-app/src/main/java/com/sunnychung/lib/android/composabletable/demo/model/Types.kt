@@ -1,4 +1,4 @@
-package com.sunnychung.lib.android.composabletable.model
+package com.sunnychung.lib.android.composabletable.demo.model
 
 typealias AndroidParcelize = Parcelize
 typealias AndroidParcelable = Parcelable

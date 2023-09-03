@@ -1,4 +1,4 @@
-package com.sunnychung.lib.android.composabletable.model
+package com.sunnychung.lib.android.composabletable.demo.model
 
 import kotlinx.serialization.Serializable
 

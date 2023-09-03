@@ -1,11 +1,11 @@
-package com.sunnychung.lib.android.composabletable.ux
+package com.sunnychung.lib.android.composabletable.demo.ux
 
-import com.sunnychung.lib.android.composabletable.model.TransitConnect
-import com.sunnychung.lib.android.composabletable.util.SDuration
-import com.sunnychung.lib.android.composabletable.util.ZonedDateTime
-import com.sunnychung.lib.android.composabletable.util.ampm
-import com.sunnychung.lib.android.composabletable.util.halfHour
-import com.sunnychung.lib.android.composabletable.util.prePadZero
+import com.sunnychung.lib.android.composabletable.demo.util.SDuration
+import com.sunnychung.lib.android.composabletable.demo.model.TransitConnect
+import com.sunnychung.lib.android.composabletable.demo.util.ZonedDateTime
+import com.sunnychung.lib.android.composabletable.demo.util.ampm
+import com.sunnychung.lib.android.composabletable.demo.util.halfHour
+import com.sunnychung.lib.android.composabletable.demo.util.prePadZero
 
 fun TransitConnect.Summary.duration(): SDuration {
     return SDuration.fromDuration(this.endAt.timestamp - this.startAt.timestamp)

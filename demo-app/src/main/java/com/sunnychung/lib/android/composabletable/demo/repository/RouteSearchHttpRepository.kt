@@ -1,6 +1,6 @@
-package com.sunnychung.lib.android.composabletable.repository
+package com.sunnychung.lib.android.composabletable.demo.repository
 
-import com.sunnychung.lib.android.composabletable.model.TransitConnect
+import com.sunnychung.lib.android.composabletable.demo.model.TransitConnect
 import kotlinx.serialization.decodeFromString
 import kotlinx.serialization.json.Json
 

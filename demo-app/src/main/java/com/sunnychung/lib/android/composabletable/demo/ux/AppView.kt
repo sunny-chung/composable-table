@@ -1,4 +1,4 @@
-package com.sunnychung.lib.android.composabletable.ux
+package com.sunnychung.lib.android.composabletable.demo.ux
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
@@ -23,9 +23,10 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import com.sunnychung.lib.android.composabletable.model.TransitConnect
-import com.sunnychung.lib.android.composabletable.repository.RouteSearchHttpRepository
-import com.sunnychung.lib.android.composabletable.util.SDuration
+import com.sunnychung.lib.android.composabletable.demo.repository.RouteSearchHttpRepository
+import com.sunnychung.lib.android.composabletable.demo.model.TransitConnect
+import com.sunnychung.lib.android.composabletable.demo.util.SDuration
+import com.sunnychung.lib.android.composabletable.ux.Table
 import java.util.concurrent.TimeUnit
 
 @Composable

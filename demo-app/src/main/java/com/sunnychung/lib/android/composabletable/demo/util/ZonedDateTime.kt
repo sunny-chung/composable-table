@@ -1,8 +1,8 @@
-package com.sunnychung.lib.android.composabletable.util
+package com.sunnychung.lib.android.composabletable.demo.util
 
-import com.sunnychung.lib.android.composabletable.model.AndroidParcelable
-import com.sunnychung.lib.android.composabletable.model.AndroidParcelize
-import com.sunnychung.lib.android.composabletable.serializer.ZonedDateTimeSerializer
+import com.sunnychung.lib.android.composabletable.demo.serializer.ZonedDateTimeSerializer
+import com.sunnychung.lib.android.composabletable.demo.model.AndroidParcelable
+import com.sunnychung.lib.android.composabletable.demo.model.AndroidParcelize
 import kotlinx.datetime.Instant
 import kotlinx.datetime.LocalDateTime
 import kotlinx.serialization.Serializable

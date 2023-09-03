@@ -1,4 +1,4 @@
-package com.sunnychung.lib.android.composabletable.util
+package com.sunnychung.lib.android.composabletable.demo.util
 
 import kotlin.time.Duration
 

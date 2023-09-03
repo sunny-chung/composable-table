@@ -1,6 +1,6 @@
-package com.sunnychung.lib.android.composabletable.model
+package com.sunnychung.lib.android.composabletable.demo.model
 
-import com.sunnychung.lib.android.composabletable.util.ZonedDateTime
+import com.sunnychung.lib.android.composabletable.demo.util.ZonedDateTime
 import kotlinx.serialization.Serializable
 
 @Serializable
