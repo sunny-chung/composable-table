@@ -83,7 +83,7 @@ fun AppView() {
 
     @Composable
     fun ToggleCell(row: Int) {
-        Box(contentAlignment = Alignment.Center) {
+        Box(contentAlignment = Alignment.Center, modifier = Modifier.background(Color.White)) {
             Switch(
                 checked = checkedRows.containsKey(row),
                 onCheckedChange = {
@@ -130,6 +130,8 @@ fun AppView() {
                 .padding(10.dp),
             columnCount = headers.size,
             rowCount = result.size + 1,
+            stickyRowCount = 2,
+            stickyColumnCount = 2,
             maxCellWidthDp = 320.dp
         ) { columnIndex, rowIndex ->
             val header = headers[columnIndex]
