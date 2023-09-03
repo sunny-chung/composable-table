@@ -17,15 +17,15 @@ import androidx.compose.ui.unit.Dp
 @Composable
 fun Table(
     modifier: Modifier = Modifier,
-    columnCount: Int,
     rowCount: Int,
+    columnCount: Int,
     stickyRowCount: Int = 0,
     stickyColumnCount: Int = 0,
     maxCellWidthDp: Dp = Dp.Infinity,
     maxCellHeightDp: Dp = Dp.Infinity,
     verticalScrollState: ScrollState = rememberScrollState(),
     horizontalScrollState: ScrollState = rememberScrollState(),
-    cellContent: @Composable (columnIndex: Int, rowIndex: Int) -> Unit
+    cellContent: @Composable (rowIndex: Int, columnIndex: Int) -> Unit
 ) {
     val columnWidths = remember { mutableStateMapOf<Int, Int>() }
     val rowHeights = remember { mutableStateMapOf<Int, Int>() }
@@ -47,14 +47,12 @@ fun Table(
     @Composable
     fun StickyCells(modifier: Modifier = Modifier, rowCount: Int, columnCount: Int) {
         if (rowCount > 0 && columnCount > 0) {
-            Box(
-                modifier = modifier
-            ) {
+            Box(modifier = modifier) {
                 Layout(
                     content = {
                         (0 until rowCount).forEach { rowIndex ->
                             (0 until columnCount).forEach { columnIndex ->
-                                cellContent(columnIndex = columnIndex, rowIndex = rowIndex)
+                                cellContent(rowIndex = rowIndex, columnIndex = columnIndex)
                             }
                         }
                     },
@@ -99,10 +97,9 @@ fun Table(
         ) {
             Layout(
                 content = {
-
                     (0 until rowCount).forEach { rowIndex ->
                         (0 until columnCount).forEach { columnIndex ->
-                            cellContent(columnIndex = columnIndex, rowIndex = rowIndex)
+                            cellContent(rowIndex = rowIndex, columnIndex = columnIndex)
                         }
                     }
                 },

@@ -133,7 +133,7 @@ fun AppView() {
             stickyRowCount = 2,
             stickyColumnCount = 2,
             maxCellWidthDp = 320.dp
-        ) { columnIndex, rowIndex ->
+        ) { rowIndex, columnIndex ->
             val header = headers[columnIndex]
             if (rowIndex == 0) {
                 HeaderCell(header)
