@@ -41,7 +41,7 @@ publishing {
         create<MavenPublication>("maven") {
             groupId = "com.github.sunny-chung"
             artifactId = "composable-table"
-            version = "1.0.0"
+            version = "1.1.0"
 
             afterEvaluate {
                 from(components["release"])
