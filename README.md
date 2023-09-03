@@ -13,6 +13,7 @@ with automatic layouts.
 - Maximum cell width/height could be optionally specified 
 - Allowing custom composable and action listeners (e.g. clickable) for each cell
 - Infinite table width and height
+- Sticky rows and columns
 - Straight-forward to use
 
 ## What is NOT included
@@ -33,7 +34,7 @@ with automatic layouts.
 ```kotlin
     dependencies {
         // ...
-        implementation("com.github.sunny-chung:composable-table:1.0.0")
+        implementation("com.github.sunny-chung:composable-table:<version>")
     }
 ```
 
@@ -41,9 +42,9 @@ with automatic layouts.
 Below shows an example of minimal usage.
 ```kotlin
     Table(
-        columnCount = 10,
-        rowCount = 100
-    ) { columnIndex, rowIndex ->
+        rowCount = 100,
+        columnCount = 10
+    ) { rowIndex, columnIndex ->
         Text("($rowIndex, $columnIndex)")
     }
 ```
