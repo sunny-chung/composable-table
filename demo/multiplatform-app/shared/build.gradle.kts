@@ -3,9 +3,10 @@ import org.jetbrains.kotlin.gradle.targets.js.dsl.ExperimentalWasmDsl
 plugins {
     kotlin("multiplatform")
     id("org.jetbrains.compose")
-    id("maven-publish")
-    id("com.android.library")
+    id("com.android.application")
 //    kotlin("android")
+
+    kotlin("plugin.serialization")
 }
 
 kotlin {
@@ -15,8 +16,13 @@ kotlin {
 
     @OptIn(ExperimentalWasmDsl::class)
     wasmJs {
-        moduleName = "composable-table"
-        browser()
+        moduleName = "composeApp"
+        browser {
+            commonWebpackConfig {
+                outputFileName = "composeApp.js"
+            }
+        }
+        binaries.executable()
     }
 
     androidTarget {
@@ -31,7 +37,14 @@ kotlin {
         iosArm64(),
         iosSimulatorArm64(),
         iosX64(),
-    )
+    ).apply {
+        forEach {
+            it.binaries.framework {
+                baseName = "ComposeApp"
+                isStatic = true
+            }
+        }
+    }
 
     sourceSets {
         val desktopMain by getting
@@ -41,20 +54,36 @@ kotlin {
             implementation(compose.foundation)
             implementation(compose.material)
             implementation(compose.ui)
+
+            implementation("org.jetbrains.kotlinx:kotlinx-datetime:0.5.0")
+            implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:1.6.2")
+
+            implementation(project(":composable-table"))
+        }
+
+        androidMain.dependencies {
+            implementation("androidx.activity:activity-compose:1.7.2")
         }
     }
 }
 
 android {
-    namespace = "com.sunnychung.lib.android.composabletable"
+    namespace = "com.sunnychung.lib.android.composabletable.mpdemo"
     compileSdk = 34
 
     defaultConfig {
+        applicationId = "com.sunnychung.lib.android.composabletable.mpdemo"
         minSdk = 23
+        targetSdk = 34
+        versionCode = 1
     }
     buildTypes {
         release {
             isMinifyEnabled = false
+            proguardFiles(
+                getDefaultProguardFile("proguard-android-optimize.txt"),
+                "proguard-rules.pro"
+            )
         }
     }
     compileOptions {
@@ -69,21 +98,6 @@ android {
     }
 }
 
-dependencies {
-//    implementation("androidx.compose.ui:ui:${libs.versions.jetpack.compose.get()}")
-//    implementation("androidx.compose.foundation:foundation:${libs.versions.jetpack.compose.get()}")
-}
-
-publishing {
-    publications {
-        create<MavenPublication>("maven") {
-            groupId = "com.github.sunny-chung"
-            artifactId = "composable-table"
-            version = "1.1.0"
-
-            afterEvaluate {
-//                from(components["release"])
-            }
-        }
-    }
+compose.experimental {
+    web.application {}
 }

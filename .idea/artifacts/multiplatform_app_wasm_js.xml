@@ -1,0 +1,6 @@
+<component name="ArtifactManager">
+  <artifact type="jar" name="multiplatform-app-wasm-js">
+    <output-path>$PROJECT_DIR$/demo/multiplatform-app/shared/build/libs</output-path>
+    <root id="archive" name="multiplatform-app-wasm-js.jar" />
+  </artifact>
+</component>

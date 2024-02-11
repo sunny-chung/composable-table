@@ -1,0 +1,6 @@
+<component name="ArtifactManager">
+  <artifact type="jar" name="composable-table-desktop">
+    <output-path>$PROJECT_DIR$/composable-table/build/libs</output-path>
+    <root id="archive" name="composable-table-desktop.jar" />
+  </artifact>
+</component>
