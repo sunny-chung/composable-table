@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="jar" name="composable-table-jvm">
+    <output-path>$PROJECT_DIR$/composable-table/build/libs</output-path>
+    <root id="archive" name="composable-table-jvm.jar">
+      <element id="module-output" name="Composable_Table.composable-table.jvmMain" />
+    </root>
+  </artifact>
+</component>

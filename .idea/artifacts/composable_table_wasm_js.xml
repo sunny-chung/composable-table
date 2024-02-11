@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="jar" name="composable-table-wasm-js">
+    <output-path>$PROJECT_DIR$/composable-table/build/libs</output-path>
+    <root id="archive" name="composable-table-wasm-js.jar">
+      <element id="module-output" name="ComposableTable.composable-table.wasmJsMain" />
+    </root>
+  </artifact>
+</component>

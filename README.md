@@ -1,8 +1,8 @@
 # Composable Table
 
-[![JitPack Release](https://jitpack.io/v/sunny-chung/composable-table.svg)](https://jitpack.io/#sunny-chung/composable-table)
+![Maven Central](https://img.shields.io/maven-central/v/io.github.sunny-chung/composable-table)
 
-An Android Jetpack Compose library that provides a `@Composable` table
+A multiplaform Jetpack Compose library that provides a `@Composable` table
 with automatic layouts.
 
 ![Demo Video](media/composable-table-demo.gif)
@@ -20,21 +20,29 @@ with automatic layouts.
 - Lazy cells
 - Grid lines (have to be implemented by users themselves inside cells)
 
+## Supported Platforms
+- Android
+- Desktop (JVM - Windows/MacOS/Linux)
+- iOS
+- WASM (JS)
+
 ## Setup
 
-1. Add the JitPack maven repository.
+For multiplatform:
 ```kotlin
-    repositories {
-        // ...
-        maven(url = "https://jitpack.io")
-    }
+kotlin {
+    sourceSets {
+        commonMain.dependencies {
+            implementation("io.github.sunny-chung:composable-table:<version>")
+            
+            // ...
 ```
 
-2. Add this library as a dependency.
+For single platform:
 ```kotlin
     dependencies {
         // ...
-        implementation("com.github.sunny-chung:composable-table:<version>")
+        implementation("io.github.sunny-chung:composable-table:<version>")
     }
 ```
 
@@ -49,7 +57,16 @@ Below shows an example of minimal usage.
     }
 ```
 
-Please read the [demo app](demo-app/src/main/java/com/sunnychung/lib/android/composabletable/demo/ux/AppView.kt) for a practical usage example.
+Please read the [demo app](demo/multiplatform-app/shared/src/commonMain/kotlin/com/sunnychung/lib/android/composabletable/demo/ux/AppView.kt) for a practical usage example.
+There is a demo app for each platform.
+
+## Migration notes
+Since v1.2.0, Composable Table moves to Maven Central to provide multiplatform support.
+Dependency identifier is changed from `com.github.sunny-chung:composable-table` to
+`io.github.sunny-chung:composable-table`.
+
+Users using old version can stay at v1.1.0 because no other change is introduced. You can upgrade to
+v1.2.0 by changing the dependency identifier and version name to enjoy multiplatform support.
 
 ## Troubleshooting
 
