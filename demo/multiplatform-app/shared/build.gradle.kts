@@ -1,3 +1,4 @@
+import org.jetbrains.compose.desktop.application.dsl.TargetFormat
 import org.jetbrains.kotlin.gradle.targets.js.dsl.ExperimentalWasmDsl
 
 plugins {
@@ -64,6 +65,10 @@ kotlin {
         androidMain.dependencies {
             implementation("androidx.activity:activity-compose:1.7.2")
         }
+
+        desktopMain.dependencies {
+            implementation(compose.desktop.currentOs)
+        }
     }
 }
 
@@ -95,6 +100,18 @@ android {
     }
     composeOptions {
         kotlinCompilerExtensionVersion = "1.5.9"
+    }
+}
+
+compose.desktop {
+    application {
+        mainClass = "MainKt"
+
+        nativeDistributions {
+            targetFormats(TargetFormat.Dmg, TargetFormat.Msi, TargetFormat.Deb)
+            packageName = "Composable Table Demo"
+            packageVersion = "1.0.0"
+        }
     }
 }
 
