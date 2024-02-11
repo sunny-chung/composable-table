@@ -41,7 +41,7 @@ kotlin {
     ).apply {
         forEach {
             it.binaries.framework {
-                baseName = "ComposeApp"
+                baseName = "ComposableTableDemoShared"
                 isStatic = true
             }
         }
