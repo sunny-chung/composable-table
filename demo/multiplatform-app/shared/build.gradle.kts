@@ -5,7 +5,6 @@ plugins {
     kotlin("multiplatform")
     id("org.jetbrains.compose")
     id("com.android.application")
-//    kotlin("android")
 
     kotlin("plugin.serialization")
 }

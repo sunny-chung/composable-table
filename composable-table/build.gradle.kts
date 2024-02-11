@@ -5,7 +5,6 @@ plugins {
     id("org.jetbrains.compose")
     id("maven-publish")
     id("com.android.library")
-//    kotlin("android")
 }
 
 kotlin {
@@ -67,11 +66,6 @@ android {
     composeOptions {
         kotlinCompilerExtensionVersion = "1.5.9"
     }
-}
-
-dependencies {
-//    implementation("androidx.compose.ui:ui:${libs.versions.jetpack.compose.get()}")
-//    implementation("androidx.compose.foundation:foundation:${libs.versions.jetpack.compose.get()}")
 }
 
 publishing {
