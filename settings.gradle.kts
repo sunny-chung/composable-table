@@ -15,4 +15,4 @@ dependencyResolutionManagement {
 
 rootProject.name = "Composable Table"
 include(":composable-table")
-include(":demo-app")
+include(":demo:android-only-app")
