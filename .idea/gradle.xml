@@ -4,12 +4,24 @@
   <component name="GradleSettings">
     <option name="linkedExternalProjectsSettings">
       <GradleProjectSettings>
+        <compositeConfiguration>
+          <compositeBuild compositeDefinitionSource="SCRIPT">
+            <builds>
+              <build path="$PROJECT_DIR$/convention-plugins" name="convention-plugins">
+                <projects>
+                  <project path="$PROJECT_DIR$/convention-plugins" />
+                </projects>
+              </build>
+            </builds>
+          </compositeBuild>
+        </compositeConfiguration>
         <option name="externalProjectPath" value="$PROJECT_DIR$" />
         <option name="gradleJvm" value="corretto-17" />
         <option name="modules">
           <set>
             <option value="$PROJECT_DIR$" />
             <option value="$PROJECT_DIR$/composable-table" />
+            <option value="$PROJECT_DIR$/convention-plugins" />
             <option value="$PROJECT_DIR$/demo" />
             <option value="$PROJECT_DIR$/demo/android-only-app" />
             <option value="$PROJECT_DIR$/demo/multiplatform-app/shared" />

@@ -20,3 +20,5 @@ include(":composable-table")
 include(":demo:android-only-app")
 include(":demo:multiplatform-app")
 project(":demo:multiplatform-app").projectDir = File("$rootDir/demo/multiplatform-app/shared")
+
+includeBuild("convention-plugins")

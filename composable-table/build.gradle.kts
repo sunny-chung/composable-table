@@ -3,9 +3,12 @@ import org.jetbrains.kotlin.gradle.targets.js.dsl.ExperimentalWasmDsl
 plugins {
     kotlin("multiplatform")
     id("org.jetbrains.compose")
-    id("maven-publish")
     id("com.android.library")
+    id("sunnychung.publication")
 }
+
+group = "io.github.sunny-chung"
+version = "1.2.0"
 
 kotlin {
     jvm(name = "desktop") {
@@ -24,6 +27,7 @@ kotlin {
                 jvmTarget = "1.8"
             }
         }
+        publishLibraryVariants = listOf("release")
     }
 
     val iosTargets = listOf(
@@ -65,19 +69,5 @@ android {
     }
     composeOptions {
         kotlinCompilerExtensionVersion = "1.5.9"
-    }
-}
-
-publishing {
-    publications {
-        create<MavenPublication>("maven") {
-            groupId = "com.github.sunny-chung"
-            artifactId = "composable-table"
-            version = "1.1.0"
-
-            afterEvaluate {
-//                from(components["release"])
-            }
-        }
     }
 }
