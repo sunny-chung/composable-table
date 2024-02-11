@@ -57,7 +57,8 @@ Below shows an example of minimal usage.
     }
 ```
 
-Please read the [demo app](demo-app/src/main/java/com/sunnychung/lib/android/composabletable/demo/ux/AppView.kt) for a practical usage example.
+Please read the [demo app](demo/multiplatform-app/shared/src/commonMain/kotlin/com/sunnychung/lib/android/composabletable/demo/ux/AppView.kt) for a practical usage example.
+There is a demo app for each platform.
 
 ## Migration notes
 Since v1.2.0, Composable Table moves to Maven Central to provide multiplatform support.
