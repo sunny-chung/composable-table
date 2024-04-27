@@ -9,28 +9,53 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.shape.CornerSize
 import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.material.LocalTextStyle
 import androidx.compose.material.Surface
 import androidx.compose.material.Switch
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.CompositionLocalProvider
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateMapOf
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
+import androidx.compose.runtime.rememberCoroutineScope
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import com.sunnychung.lib.android.composabletable.demo.repository.RouteSearchHttpRepository
 import com.sunnychung.lib.android.composabletable.demo.model.TransitConnect
+import com.sunnychung.lib.android.composabletable.demo.repository.RouteSearchHttpRepository
 import com.sunnychung.lib.android.composabletable.demo.util.SDuration
 import com.sunnychung.lib.android.composabletable.ux.Table
+import kotlinx.coroutines.launch
 
 @Composable
 fun AppView() {
+    // Use custom font to work around the issue that Compose WASM cannot display Unicode characters
+    // https://github.com/JetBrains/compose-multiplatform/issues/3967
+    val coroutineScope = rememberCoroutineScope()
+    var contentFontFamily: FontFamily? by remember { mutableStateOf(null) }
+    LaunchedEffect(Unit) {
+        coroutineScope.launch {
+            contentFontFamily = loadContentFont()
+        }
+    }
 
+    CompositionLocalProvider(LocalTextStyle provides LocalTextStyle.current.copy(fontFamily = contentFontFamily)) {
+        if (contentFontFamily != null) {
+            AppContentView()
+        }
+    }
+}
+
+@Composable
+fun AppContentView() {
     @Composable
     fun HeaderCell(text: String) {
         if (text.isNullOrBlank()) {

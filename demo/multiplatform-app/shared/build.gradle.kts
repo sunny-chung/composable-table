@@ -15,7 +15,7 @@ kotlin {
     }
 
     @OptIn(ExperimentalWasmDsl::class)
-    wasmJs {
+    val wasmTarget = wasmJs {
         moduleName = "composeApp"
         browser {
             commonWebpackConfig {
@@ -47,27 +47,44 @@ kotlin {
     }
 
     sourceSets {
-        val desktopMain by getting
+        val commonMain by getting {
+            dependencies {
+                implementation(compose.runtime)
+                implementation(compose.foundation)
+                implementation(compose.material)
+                implementation(compose.ui)
+                implementation(compose.components.resources)
 
-        commonMain.dependencies {
-            implementation(compose.runtime)
-            implementation(compose.foundation)
-            implementation(compose.material)
-            implementation(compose.ui)
-
-            implementation("org.jetbrains.kotlinx:kotlinx-datetime:0.5.0")
+                implementation("org.jetbrains.kotlinx:kotlinx-datetime:0.5.0")
             implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:1.6.2")
 
             implementation(project(":composable-table"))
+            }
+        }
+
+        val commonNonAndroidMain by creating {
+            dependsOn(commonMain)
         }
 
         androidMain.dependencies {
             implementation("androidx.activity:activity-compose:1.7.2")
         }
 
-        desktopMain.dependencies {
-            implementation(compose.desktop.currentOs)
+        val desktopMain by getting {
+            dependsOn(commonNonAndroidMain)
+            dependencies {
+                implementation(compose.desktop.currentOs)
+            }
         }
+
+        val iosMain by creating {
+            dependsOn(commonNonAndroidMain)
+        }
+        configure(iosTargets) {
+            compilations["main"].defaultSourceSet.dependsOn(iosMain)
+        }
+
+        wasmTarget.compilations["main"].defaultSourceSet.dependsOn(commonNonAndroidMain)
     }
 }
 
@@ -81,6 +98,7 @@ android {
         targetSdk = 34
         versionCode = 1
     }
+    sourceSets["main"].res.srcDirs("src/commonMain/composeResources")
     buildTypes {
         release {
             isMinifyEnabled = false
