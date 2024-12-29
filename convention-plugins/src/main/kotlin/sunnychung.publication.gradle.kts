@@ -105,3 +105,11 @@ publishing {
 signing {
     sign(publishing.publications)
 }
+
+// skip signing if publishing to local maven
+tasks.withType<Sign>().configureEach {
+    onlyIf("publish to remote") {
+        gradle.taskGraph.allTasks.any { it.name.matches("publish.*PublicationToSonatypeRepository".toRegex()) }
+            .also { if (it) println("Will sign artifacts") }
+    }
+}
