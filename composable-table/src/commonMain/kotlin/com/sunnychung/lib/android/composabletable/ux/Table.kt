@@ -128,13 +128,13 @@ fun Table(
 
                     val existingWidth = columnWidths[columnIndex] ?: 0
                     val maxWidth = maxOf(existingWidth, placeable.width)
-                    if (maxWidth > existingWidth) {
+                    if (maxWidth > existingWidth || (existingWidth == 0 && maxWidth == existingWidth)) {
                         columnWidths[columnIndex] = maxWidth
                     }
 
                     val existingHeight = rowHeights[rowIndex] ?: 0
                     val maxHeight = maxOf(existingHeight, placeable.height)
-                    if (maxHeight > existingHeight) {
+                    if (maxHeight > existingHeight || (existingHeight == 0 && maxHeight == existingHeight)) {
                         rowHeights[rowIndex] = maxHeight
                     }
                 }
