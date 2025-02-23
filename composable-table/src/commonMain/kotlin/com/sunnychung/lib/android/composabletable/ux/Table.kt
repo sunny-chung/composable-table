@@ -30,6 +30,11 @@ fun Table(
     val columnWidths = remember { mutableStateMapOf<Int, Int>() }
     val rowHeights = remember { mutableStateMapOf<Int, Int>() }
 
+    if (columnCount != columnWidths.size || rowCount != rowHeights.size) {
+        columnWidths.clear()
+        rowHeights.clear()
+    }
+
     val maxCellWidth = if (listOf(Dp.Infinity, Dp.Unspecified).contains(maxCellWidthDp)) {
         Constraints.Infinity
     } else {
@@ -157,6 +162,10 @@ fun Table(
                     }
                 }
             }
+        }
+
+        if (columnWidths.isEmpty() || rowHeights.isEmpty()) {
+            return@Box
         }
 
         StickyCells(
