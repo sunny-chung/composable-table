@@ -6,8 +6,11 @@ import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateMapOf
+import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.layout.Layout
 import androidx.compose.ui.platform.LocalDensity
@@ -46,8 +49,9 @@ fun Table(
         with(LocalDensity.current) { maxCellHeightDp.toPx() }.toInt()
     }
 
-    var accumWidths = mutableListOf<Int>()
-    var accumHeights = mutableListOf<Int>()
+    // not using mutableStateListOf because the list is entirely replaced on mutations
+    var accumWidths by remember { mutableStateOf(listOf<Int>()) }
+    var accumHeights by remember { mutableStateOf(listOf<Int>()) }
 
     @Composable
     fun StickyCells(modifier: Modifier = Modifier, rowCount: Int, columnCount: Int) {
